@@ -36,4 +36,15 @@ public class AuthController {
         return ResponseEntity.ok(login);
     }
     
+    @PostMapping(path = {"/signup"})
+    public ResponseEntity cadastrar(@RequestBody Usuario login){
+        var result = service.signup(login);
+        
+        if(result == null){
+            return ResponseEntity.badRequest().build();
+        }
+        
+        return ResponseEntity.ok(login);
+    }
+    
 }

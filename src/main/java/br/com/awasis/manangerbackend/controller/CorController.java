@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 @AllArgsConstructor
 @RestController
-@RequestMapping({"/cor"})
+@RequestMapping({"/cores"})
 public class CorController {
     
     private CorService service;

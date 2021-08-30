@@ -105,10 +105,11 @@ public class ProdutoServiceImpl implements ProdutoService {
         if(cp.getGrupoProduto()==  null){
             return null;
         }
+        /* 
         if(cp.getSubGrupoProduto()==  null){
             return null;
         }
-        /* 
+        
         if(cp.getValor() <= 0){
             return null;
         }

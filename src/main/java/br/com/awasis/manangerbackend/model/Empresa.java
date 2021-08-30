@@ -78,7 +78,7 @@ public class Empresa{
     @Column(length = 50, name = "razao_social")
     private String razaoSocial;
     
-    @Column(length = 50, name = "incricao_estadual")
+    @Column(length = 50, name = "inscricao_estadual")
     private String incricaoEstadual;
     
     @Column(length = 50, name = "inscricao_municipal")

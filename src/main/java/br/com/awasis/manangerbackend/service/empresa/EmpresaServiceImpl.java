@@ -40,7 +40,23 @@ public class EmpresaServiceImpl implements EmpresaService {
 
     @Override
     public Empresa save(Empresa cp) {
-        //Regra de negocio 
+        
+        if(cp.getEndereco() == null){
+            return null;
+        }
+        
+        if(cp.getCnpj() == null){
+            return null;
+        }
+        
+        if(cp.getRazaoSocial() == null){
+            return null;
+        }
+        
+        if(cp.getNomeFantasia() == null){
+            return null;
+        }
+        
         return repository.save(cp);
     }
 

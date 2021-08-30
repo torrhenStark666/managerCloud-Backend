@@ -5,7 +5,7 @@
  */
 package br.com.awasis.manangerbackend.service.login;
 
-import br.com.awasis.manangerbackend.model.Login_;
+import br.com.awasis.manangerbackend.model.Usuario_;
 import javax.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;
 import static org.springframework.data.jpa.domain.Specification.where;
@@ -18,28 +18,28 @@ public class UsuarioSpecification {
     
     public static Specification byIdSpecification(long id){
         return (root, query, builder) -> {
-            Predicate equalPredicate = builder.equal(root.get(Login_.idLogin), id);
+            Predicate equalPredicate = builder.equal(root.get(Usuario_.idLogin), id);
             return equalPredicate; 
         };
     }
     
     public static Specification byLoginSpecification(String login){
         return (root, query, builder) -> {
-            Predicate equalPredicate = builder.like(root.get(Login_.login), "%"+login.trim()+"%");
+            Predicate equalPredicate = builder.like(root.get(Usuario_.login), "%"+login.trim()+"%");
             return equalPredicate; 
         };
     }
     
     public static Specification bySenhaSpecification(String senha){
         return (root, query, builder) -> {
-            Predicate equalPredicate = builder.like(root.get(Login_.senha), "%"+senha.trim()+"%");
+            Predicate equalPredicate = builder.like(root.get(Usuario_.senha), "%"+senha.trim()+"%");
             return equalPredicate; 
         };
     }
     
     public static Specification byAtivoSpecification(boolean ativo){
         return (root, query, builder) -> {
-            Predicate equalPredicate = builder.equal(root.get(Login_.ativo), ativo);
+            Predicate equalPredicate = builder.equal(root.get(Usuario_.ativo), ativo);
             return equalPredicate; 
         };
     }

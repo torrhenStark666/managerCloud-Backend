@@ -20,6 +20,7 @@ public interface UsuarioService {
     public List find(Usuario cp);
     public Optional findLogin(String cp);
     public Usuario save(Usuario cp);
+    public Usuario signup(Usuario cp);
     public Optional<Usuario> update(Usuario cp, long id);
     public boolean delete(long id);  
     

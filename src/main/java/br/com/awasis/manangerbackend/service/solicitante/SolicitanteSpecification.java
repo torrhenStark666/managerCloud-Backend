@@ -7,7 +7,7 @@ package br.com.awasis.manangerbackend.service.solicitante;
 
 import br.com.awasis.manangerbackend.model.GrupoProduto_;
 import br.com.awasis.manangerbackend.model.Usuario;
-import br.com.awasis.manangerbackend.model.Login_;
+import br.com.awasis.manangerbackend.model.Usuario_;
 import br.com.awasis.manangerbackend.model.Solicitante;
 import br.com.awasis.manangerbackend.model.Solicitante_;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -34,7 +34,7 @@ public class SolicitanteSpecification {
     public static Specification byIdLoginSpecification(long id){
         return (root, query, builder) ->{
             Join<Solicitante, Usuario> grupoProdutoJoin = root.join(Solicitante_.login);
-            Predicate equalPredicate = builder.equal(grupoProdutoJoin.get(Login_.idLogin) , id);
+            Predicate equalPredicate = builder.equal(grupoProdutoJoin.get(Usuario_.idLogin) , id);
             return equalPredicate;
         };    
     }

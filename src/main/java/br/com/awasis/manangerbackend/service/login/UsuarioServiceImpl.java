@@ -5,8 +5,11 @@
  */
 package br.com.awasis.manangerbackend.service.login;
 
+import br.com.awasis.manangerbackend.model.Role;
 import br.com.awasis.manangerbackend.model.Usuario;
 import br.com.awasis.manangerbackend.repository.LoginRepository;
+import br.com.awasis.manangerbackend.service.empresa.EmpresaService;
+import br.com.awasis.manangerbackend.service.role.RoleService;
 import java.util.List;
 import java.util.Optional;
 import lombok.AllArgsConstructor;
@@ -22,6 +25,12 @@ public class UsuarioServiceImpl implements UsuarioService {
     
     @Autowired
     private LoginRepository repository;
+    
+    @Autowired
+    private EmpresaService empresaService;
+    
+    @Autowired
+    private RoleService roleService;
     
     @Override
     public Optional findById(long id) {
@@ -61,6 +70,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
         
         if(cp.getSenha().isEmpty() || cp.getSenha().isBlank()){
+            return null;
+        }
+        
+        if(cp.getEmpresa() == null){
             return null;
         }
         
@@ -107,6 +120,42 @@ public class UsuarioServiceImpl implements UsuarioService {
             repository.deleteById(id);
             return true;
         }else return false;
+    }
+
+    @Override
+    public Usuario signup(Usuario cp) {
+        
+        if(cp.getEmpresa() == null){
+            return null;
+        }
+        
+        if(cp.getEmpresa().getEndereco() == null){
+            return null;
+        }
+        
+        var empresa = empresaService.save(cp.getEmpresa());
+        
+        if(empresa == null){
+            return null;
+        }
+        
+        if(cp.getLogin() == null){
+            return null;
+        }
+        
+        if(cp.getSenha() == null){
+            return null;
+        }
+        
+        roleService.findById(1).map((record) ->{
+            cp.setRole((Role) record);
+            return record;
+        });
+
+        cp.setAtivo(true);
+        cp.setEmpresa(empresa);
+        
+        return repository.save(cp);
     }
 
 
