@@ -42,7 +42,7 @@ public class Liberador {
     private long idLiberador;
     
     @ManyToOne
-    @JoinColumn(name="id_login")
+    @JoinColumn(name="id_usuario")
     private Usuario login;
     
     

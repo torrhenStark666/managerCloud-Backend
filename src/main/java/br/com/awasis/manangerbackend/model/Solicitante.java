@@ -44,7 +44,7 @@ public class Solicitante {
     
     
     @ManyToOne
-    @JoinColumn(name="id_login")
+    @JoinColumn(name="id_usuario")
     private Usuario login;
     
     
